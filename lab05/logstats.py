@@ -53,10 +53,10 @@ def top_errors(lines, n):
     return max_pairs
 
 def format_report(counts, errors):
-    counts
+    counts1 = list(counts.items())
     what_return = f"Отчёт по журналу\n\n"
-    for i in range(len(counts)):
-        what_return += f"{counts[i][0]}: {counts[i][1]}\n"
+    for i in range(len(counts1)):
+        what_return += f"{counts1[i][0]}: {counts1[i][1]}\n"
     what_return += f"\nЧастые ошибки:\n"
     for j in range(len(errors)):
         what_return += f"- {errors[j][0]} — {errors[j][1]}\n"
