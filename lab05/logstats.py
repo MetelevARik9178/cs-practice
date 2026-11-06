@@ -14,19 +14,20 @@ def parse_event(line):
 
 def count_levels(lines):
     dictionary = {
-        'BROKEN':0,
-        'DEBUG':0,
-        'ERROR':0,
-        'INFO':0,
-        'WARNING':0
     }
     for line in lines:
         if if_VE(line):
             good_line = parse_event(line)
-            dictionary[good_line['level']] += 1
+            if if_KE(dictionary, good_line['level']):
+                dictionary[good_line['level']] += 1
+            else:
+                dictionary[good_line['level']] = 1
         else:
-            dictionary['BROKEN'] += 1
-    pairs = list(dictionary.items())
+            if if_KE(dictionary, 'BROKEN'):
+                dictionary['BROKEN'] += 1
+            else:
+                dictionary['BROKEN'] = 1
+    pairs = dictionary
     return pairs
     
 def top_errors(lines, n):
@@ -52,6 +53,7 @@ def top_errors(lines, n):
     return max_pairs
 
 def format_report(counts, errors):
+    counts
     what_return = f"Отчёт по журналу\n\n"
     for i in range(len(counts)):
         what_return += f"{counts[i][0]}: {counts[i][1]}\n"
