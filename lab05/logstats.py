@@ -1,6 +1,7 @@
 def parse_event(line):
     line = line.split(' ')
     data = line[0].split('-')
+    data01 = line[2].split(':')
     if len(line) >= 3 and if_int(data[0]) and if_level(line[1]):
         time, level, *message = line
         message = ' '.join(message).strip()
