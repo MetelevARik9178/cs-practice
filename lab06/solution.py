@@ -2,7 +2,7 @@ def count_by_extension(paths):
     expansions = {}
     for path in paths:
         cut_path = path.split('.')
-        if len(cut_path) > 1:
+        if len(cut_path) > 1 and path[0] != '.':
             expansion = cut_path[-1].lower()
             expansions[expansion] = expansions.get(expansion, 0) + 1
         else:
@@ -63,4 +63,3 @@ def heavy_cut(path):
         return(cut_our_must)
     else:
         return("")
-        
