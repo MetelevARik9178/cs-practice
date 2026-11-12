@@ -44,10 +44,10 @@ def who_bigger(path1, path2):
         return False
     else:
         for i in range(min(len(cut_path1[0]), len(cut_path2[0]))):
-            if cut_path1[0][i] < cut_path2[0][i]:
+            if cut_path1[0][i] > cut_path2[0][i]:
                 return True
                 break
-            elif cut_path1[0][i] > cut_path2[0][i]:
+            elif cut_path1[0][i] < cut_path2[0][i]:
                 return False
                 break
     return False
