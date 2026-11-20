@@ -19,11 +19,15 @@ def parse_settings(lines):
         if flag:
             if line[0] == '#':
                 continue
-            key, value = line.split(':')
+            if ':' in line:
+                key, value = line.split(':')
+            else:
+                continue
             value = value.strip()
             if value == "":
                 flag = False
-                break
+                data = []
+                continue
             if if_int(value):
                 value = int(value)
             else:
@@ -56,5 +60,4 @@ def records_to_json(records):
     return 0
 
 print(csv_to_records("id, город \n1, Азов \n2,Шахты\n"))
-print(parse_settings(["# отчёт", "title: Отчёт за март", "decimals: 1", "active: true", "columns:"]))
-#, "  - город", "  - цена"
+print(parse_settings(["# отчёт", "title: Отчёт за март", "decimals: 1", "active: true", "columns:", "  - город", "  - цена"]))
