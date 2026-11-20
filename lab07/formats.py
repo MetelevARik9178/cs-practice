@@ -16,26 +16,29 @@ def parse_settings(lines):
     flag = True
     data = []
     for line in lines:
-        if flag:
-            if line[0] == '#':
-                continue
-            if ':' in line:
-                key, value = line.split(':')
+        if line != "":
+            if flag:
+                if line[0] == '#':
+                    continue
+                if ':' in line:
+                    key, value = line.split(':')
+                else:
+                    continue
+                value = value.strip()
+                if value == "":
+                    flag = False
+                    data = []
+                    continue
+                if if_int(value):
+                    value = int(value)
+                else:
+                    if if_bool(value):
+                        value = bool(value)
+                records[key] = value
             else:
-                continue
-            value = value.strip()
-            if value == "":
-                flag = False
-                data = []
-                continue
-            if if_int(value):
-                value = int(value)
-            else:
-                if if_bool(value):
-                    value = bool(value)
-            records[key] = value
+                data.append(line[4:])
         else:
-            data.append(line[4:])
+            continue
     if data != []:
         records[key] = data
     return records
