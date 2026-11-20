@@ -25,6 +25,6 @@ def merge_by_key(rows, extra, key):
 def records_to_json(records):
     return 0
 
-print(csv_to_records("id,город\n1,Азов\n2,Шахты"))
-print(parse_settings(["# отчёт", "title: Отчёт за март", "decimals: 1", "active: true", "columns:"]))
+#print(csv_to_records("id,город\n1,Азов\n2,Шахты"))
+#print(parse_settings(["# отчёт", "title: Отчёт за март", "decimals: 1", "active: true", "columns:"]))
 #, "  - город", "  - цена"
