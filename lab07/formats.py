@@ -7,7 +7,7 @@ def csv_to_records(text):
         line = line.split(',')
         record = {}
         for i in range(len(line)):
-            record[head[i]] = line[i].strip()
+            record[head[i].strip()] = line[i].strip()
         data.append(record)
     return data
 
@@ -26,6 +26,6 @@ def merge_by_key(rows, extra, key):
 def records_to_json(records):
     return 0
 
-print(csv_to_records("id,город\n1, Азов \n2,Шахты\n"))
+print(csv_to_records("id, город \n1, Азов \n2,Шахты\n"))
 #print(parse_settings(["# отчёт", "title: Отчёт за март", "decimals: 1", "active: true", "columns:"]))
 #, "  - город", "  - цена"
